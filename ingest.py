@@ -34,6 +34,7 @@ def ingest_documents():
     chunks = splitter.split_documents(documents)
 
     texts = [c.page_content for c in chunks]
+    metadata = [c.metadata for c in chunks]
 
     embedder = SentenceTransformer("all-MiniLM-L6-v2")
     embeddings = embedder.encode(texts, show_progress_bar=True)
@@ -46,6 +47,9 @@ def ingest_documents():
 
     with open(f"{VECTOR_DIR}/texts.pkl", "wb") as f:
         pickle.dump(texts, f)
+
+    with open(f"{VECTOR_DIR}/metadata.pkl", "wb") as f:
+        pickle.dump((texts, metadata), f)
 
     print("✅ Ingestion complete")
 
