@@ -1,0 +1,11 @@
+langchain-community
+langchain-text-splitters
+sentence-transformers
+faiss-cpu
+pypdf
+python-docx
+nltk
+fastapi
+uvicorn
+python-multipart
+scikit-learn
